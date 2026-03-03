@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação Musical 1 - Plano de Ensino Interativo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        /* Paleta Horizonte Definida como Padrão */
+        :root {
+            --primary: #000000;
+            --secondary: #C87F8B;
+            --accent: #E9A97F;
+            --bg: #E7F0C7;
+            --text: #000000;
+            --surface: #BCDFB9;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: all 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: var(--surface);
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-fade {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .section-fade.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tab-btn.active {
+            background-color: var(--secondary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Animações Customizadas */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        /* Scrollbar custom */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Interface Principal -->
+    <div id="main-content" class="opacity-100 transition-opacity duration-700">
+        <!-- Navegação Superior -->
+        <nav class="sticky top-0 z-40 bg-opacity-90 backdrop-blur-md shadow-md py-4 px-6 mb-8 border-b" style="background-color: var(--surface); border-color: var(--secondary)">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 rounded-lg" style="background-color: var(--secondary); color: white;">
+                        <i class="fas fa-music fa-lg"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-xl leading-none">Criação Musical 1</h2>
+                        <span class="text-xs opacity-70">Glauber Lucio Alves Santiago</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button onclick="showSection('geral')" class="tab-btn active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">Geral</button>
+                    <button onclick="showSection('ementa')" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">Ementa</button>
+                    <button onclick="showSection('metodo')" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">Metodologia</button>
+                    <button onclick="showSection('avaliacao')" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">Avaliação</button>
+                    <button onclick="showSection('bibliografia')" class="tab-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">Bibliografia</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-5xl mx-auto px-6 pb-20">
+            
+            <!-- SEÇÃO GERAL -->
+            <section id="section-geral" class="section-fade active animate-fadeIn">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="glass-card p-6 flex flex-col items-center text-center">
+                        <i class="fas fa-clock text-3xl mb-4" style="color: var(--secondary)"></i>
+                        <h3 class="font-bold mb-1">Carga Horária</h3>
+                        <p class="text-2xl font-bold">60h</p>
+                        <p class="text-xs opacity-60">30h Teoria / 30h Prática</p>
+                    </div>
+                    <div class="glass-card p-6 flex flex-col items-center text-center">
+                        <i class="fas fa-map-marker-alt text-3xl mb-4" style="color: var(--secondary)"></i>
+                        <h3 class="font-bold mb-1">Localização</h3>
+                        <p class="text-xl">Campus São Carlos</p>
+                        <p class="text-xs opacity-60">Presencial - 2026/1</p>
+                    </div>
+                    <div class="glass-card p-6 flex flex-col items-center text-center">
+                        <i class="fas fa-university text-3xl mb-4" style="color: var(--secondary)"></i>
+                        <h3 class="font-bold mb-1">Indicada para</h3>
+                        <p class="text-xl">MusL - Música</p>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 mb-8">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-bullseye" style="color: var(--accent)"></i> Objetivos Gerais
+                    </h2>
+                    <p class="text-lg leading-relaxed opacity-90">
+                        Elaborar canções harmonizadas, peças musicais envolvendo conceitos variados da área de harmonia e trilha sonora para animação.
+                    </p>
+                </div>
+
+                <div class="glass-card p-8">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-list-check" style="color: var(--accent)"></i> Tópicos do Curso
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 p-4 rounded-lg bg-black/5">
+                            <span class="w-10 h-10 flex items-center justify-center rounded-full font-bold text-white" style="background-color: var(--secondary)">1</span>
+                            <div class="flex-1">Fundamentos Musicais e Instrumentação</div>
+                            <span class="font-mono text-sm opacity-60">15h</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-lg bg-black/5">
+                            <span class="w-10 h-10 flex items-center justify-center rounded-full font-bold text-white" style="background-color: var(--secondary)">2</span>
+                            <div class="flex-1">Criação Musical e Relação Melodia–Harmonia</div>
+                            <span class="font-mono text-sm opacity-60">15h</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-lg bg-black/5">
+                            <span class="w-10 h-10 flex items-center justify-center rounded-full font-bold text-white" style="background-color: var(--secondary)">3</span>
+                            <div class="flex-1">Harmonia Aplicada à Criação</div>
+                            <span class="font-mono text-sm opacity-60">15h</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-lg bg-black/5">
+                            <span class="w-10 h-10 flex items-center justify-center rounded-full font-bold text-white" style="background-color: var(--secondary)">4</span>
+                            <div class="flex-1">Projeto de Composição</div>
+                            <span class="font-mono text-sm opacity-60">15h</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO EMENTA -->
+            <section id="section-ementa" class="section-fade">
+                <div class="glass-card p-10 mb-8 border-l-8" style="border-color: var(--accent)">
+                    <h2 class="text-3xl font-bold mb-6 uppercase tracking-tighter">Conteúdo Programático</h2>
+                    <p class="text-xl leading-relaxed italic mb-8 opacity-80">
+                        "Compreensão sobre melodia, base rítmica e rudimentos de instrumentação. Estudo e emprego dos tipos de nota na relação entre melodia e acordes..."
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="p-4 rounded border" style="border-color: var(--secondary)">
+                            <h4 class="font-bold mb-2">Harmonia Diatônica</h4>
+                            <p>Campos harmônicos maiores e menores, preparação, empréstimo modal e acordes diminutos.</p>
+                        </div>
+                        <div class="p-4 rounded border" style="border-color: var(--secondary)">
+                            <h4 class="font-bold mb-2">Linguagem Blues</h4>
+                            <p>Acorde IV blues, escala blue e campos harmônicos por afinidade.</p>
+                        </div>
+                        <div class="p-4 rounded border" style="border-color: var(--secondary)">
+                            <h4 class="font-bold mb-2">Relação Melodia-Acorde</h4>
+                            <p>Análise de notas melódicas e sustentação harmônica.</p>
+                        </div>
+                        <div class="p-4 rounded border" style="border-color: var(--secondary)">
+                            <h4 class="font-bold mb-2">Composição</h4>
+                            <p>Estruturação de canções e trilha sonora para animação.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO METODOLOGIA -->
+            <section id="section-metodo" class="section-fade">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                    <div class="glass-card p-8">
+                        <h2 class="text-2xl font-bold mb-4">Estratégia de Ensino</h2>
+                        <p class="mb-4">Aprendizagem ativa baseada em <strong>Mapas Conceituais</strong> (Ausubel e Novak).</p>
+                        <ul class="space-y-3">
+                            <li class="flex gap-2"><i class="fas fa-check-circle" style="color: var(--secondary)"></i> Laboratório de informática com uso individual.</li>
+                            <li class="flex gap-2"><i class="fas fa-check-circle" style="color: var(--secondary)"></i> Uso de DAWs online e IA como suporte criativo.</li>
+                            <li class="flex gap-2"><i class="fas fa-check-circle" style="color: var(--secondary)"></i> Gravação e transcrição das aulas para revisão.</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card p-8">
+                        <h2 class="text-2xl font-bold mb-4">Softwares</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-4 py-2 rounded-lg bg-black/5 border border-black/10 flex items-center gap-2">
+                                <i class="fas fa-pen-nib"></i> Musescore
+                            </span>
+                            <span class="px-4 py-2 rounded-lg bg-black/5 border border-black/10 flex items-center gap-2">
+                                <i class="fas fa-wave-square"></i> Audacity
+                            </span>
+                            <span class="px-4 py-2 rounded-lg bg-black/5 border border-black/10 flex items-center gap-2">
+                                <i class="fas fa-cloud"></i> Mus Hub
+                            </span>
+                            <span class="px-4 py-2 rounded-lg bg-black/5 border border-black/10 flex items-center gap-2">
+                                <i class="fas fa-robot"></i> Inteligência Artificial
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-8">
+                    <h2 class="text-2xl font-bold mb-4">Atividades do Aluno</h2>
+                    <p class="leading-relaxed opacity-90">
+                        O estudante terá um caderno estruturado para 15 aulas, com pentagrama e espaços para mapas conceituais. A cada aula, deve-se conectar a teoria musical com vivências pessoais e conteúdos de outras áreas. Ao final, apresentará um <strong>Trabalho Prático Autoral</strong>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SEÇÃO AVALIAÇÃO -->
+            <section id="section-avaliacao" class="section-fade">
+                <div class="glass-card overflow-hidden">
+                    <div class="p-8 text-white" style="background-color: var(--secondary)">
+                        <h2 class="text-3xl font-bold">Processo Avaliativo</h2>
+                        <p class="opacity-80">Avaliação contínua e processual (Total: 10,0 pontos)</p>
+                    </div>
+                    <div class="p-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="p-4 border-b flex justify-between">
+                                <span>Mapas Conceituais (3 etapas)</span>
+                                <span class="font-bold">3,0 pts</span>
+                            </div>
+                            <div class="p-4 border-b flex justify-between">
+                                <span>Exercícios Avaliativos</span>
+                                <span class="font-bold">2,0 pts</span>
+                            </div>
+                            <div class="p-4 border-b flex justify-between">
+                                <span>Prova Individual</span>
+                                <span class="font-bold">3,0 pts</span>
+                            </div>
+                            <div class="p-4 border-b flex justify-between">
+                                <span>Trabalho Final</span>
+                                <span class="font-bold">2,0 pts</span>
+                            </div>
+                        </div>
+                        <div class="p-6 rounded-xl" style="background-color: var(--accent); color: var(--primary)">
+                            <h3 class="font-bold text-lg mb-2"><i class="fas fa-exclamation-triangle"></i> Regras Importantes</h3>
+                            <ul class="text-sm space-y-2">
+                                <li>• Frequência mínima: 75%</li>
+                                <li>• Oportunidade de aprimoramento em avaliações baixas (uma vez).</li>
+                                <li>• PAC disponível para nota final entre 5 e 6 com 75% de presença.</li>
+                                <li>• As notas de ao menos dois terços dos instrumentos de avaliação utilizados serão divulgadas até a semana 11, ou trinta dias antes do final do período letivo.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO BIBLIOGRAFIA -->
+            <section id="section-bibliografia" class="section-fade">
+                <h2 class="text-2xl font-bold mb-6">Bibliografia Básica</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <div class="glass-card p-6">
+                        <h4 class="font-bold text-sm mb-2 opacity-60">CARLOS ALMADA</h4>
+                        <p class="font-semibold">Arranjo</p>
+                        <span class="text-xs italic">Ed. Unicamp, 2000</span>
+                    </div>
+                    <div class="glass-card p-6">
+                        <h4 class="font-bold text-sm mb-2 opacity-60">IAN GUEST</h4>
+                        <p class="font-semibold">Arranjo: método prático</p>
+                        <span class="text-xs italic">Lumiar, 1996</span>
+                    </div>
+                    <div class="glass-card p-6">
+                        <h4 class="font-bold text-sm mb-2 opacity-60">JOHN HOWARD</h4>
+                        <p class="font-semibold">Aprendendo a compor</p>
+                        <span class="text-xs italic">Jorge Zahar, 1991</span>
+                    </div>
+                </div>
+                
+                <h2 class="text-2xl font-bold mb-6">Complementar</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="p-4 rounded border text-xs" style="border-color: var(--accent)">Joe Bennett - Songwriting</div>
+                    <div class="p-4 rounded border text-xs" style="border-color: var(--accent)">Matthew Kozak - Jazz theory</div>
+                    <div class="p-4 rounded border text-xs" style="border-color: var(--accent)">Zack Price - Computer-based music</div>
+                    <div class="p-4 rounded border text-xs" style="border-color: var(--accent)">R. Murray Schafer - Educação Sonora</div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="mt-20 py-10 px-6 text-center border-t border-gray-200" style="background-color: var(--surface)">
+            <p class="text-sm opacity-60">Página formatada por IA baseada em texto enviado pelo usuário.</p>
+            <p id="date-footer" class="text-xs font-mono mt-2 opacity-40"></p>
+        </footer>
+    </div>
+
+    <script>
+        // Navegação de Seções
+        function showSection(id) {
+            const sections = document.querySelectorAll('.section-fade');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            sections.forEach(s => {
+                s.classList.remove('active');
+            });
+            
+            btns.forEach(b => {
+                b.classList.remove('active');
+                if(b.getAttribute('onclick').includes(id)) b.classList.add('active');
+            });
+
+            document.getElementById('section-' + id).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Data Dinâmica no carregamento
+        window.onload = () => {
+            const d = new Date();
+            document.getElementById('date-footer').innerText = d.toLocaleDateString('pt-BR', {
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit'
+            });
+        }
+    </script>
+</body>
+</html>
