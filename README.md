@@ -1,0 +1,1 @@
+Este projeto apresenta um plano de ensino interativo para a disciplina Criação Musical 1, organizado em uma interface web moderna e responsiva que facilita a visualização de objetivos, ementa, metodologia, avaliação e bibliografia de forma clara, dinâmica e acessível.
